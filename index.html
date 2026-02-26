@@ -26,7 +26,9 @@ section h1 {
     font-size: 8vw;
     font-weight: 900;
     text-align: center;
+    position: relative;
 
+    /* Gradient */
     background: linear-gradient(
         180deg,
         #8bdbc6,
@@ -34,10 +36,37 @@ section h1 {
         #306053
     );
 
+    /* Make gradient apply to text */
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+
+    /* Slight translucency */
+    opacity: 0.95;
+        text-shadow: 
+        0 0 5px rgba(139, 219, 198, 0.3),
+        0 0 15px rgba(74, 186, 156, 0.2);
+}
+
+/* Glass highlight overlay */
+section h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.05)
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events: none;
 }
             nav {
                 background-color: black;
