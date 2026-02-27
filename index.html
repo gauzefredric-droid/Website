@@ -174,6 +174,78 @@ spline-viewer {
 footer {
     height: 100px;
 }
+/* ===== VALUE SECTION ===== */
+.value-section {
+    padding: 120px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.value-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.value-sub {
+    max-width: 700px;
+    margin: 0 auto 80px auto;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Cards */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+.value-card {
+    padding: 40px 30px;
+    border-radius: 24px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-6px);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.value-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.value-card p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+/* Bottom CTA */
+.value-cta {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.value-cta h2 {
+    margin-bottom: 20px;
+}
+
+.value-cta p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
 
 </style>
 </head>
@@ -202,6 +274,57 @@ footer {
     </div>
 
 
+
+</section>
+<section class="value-section">
+
+    <h2>Designed for People Who Manage People.</h2>
+
+    <p class="value-sub">
+        Whether you're tracking students, managing teams, or organizing performance data —
+        EasyDB removes the chaos and replaces it with clarity.
+    </p>
+
+    <div class="value-grid">
+
+        <div class="value-card">
+            <h3>Save Hours Every Week</h3>
+            <p>
+                No more scattered spreadsheets or manual updates.
+                Everything lives in one clean, structured system —
+                so you spend less time organizing and more time leading.
+            </p>
+        </div>
+
+        <div class="value-card">
+            <h3>Stay in Control</h3>
+            <p>
+                Instantly access attendance, performance, notes, or progress.
+                EasyDB gives you a clear overview of every individual,
+                without digging through files.
+            </p>
+        </div>
+
+        <div class="value-card">
+            <h3>Reduce Stress</h3>
+            <p>
+                When information is organized, decisions become easier.
+                EasyDB helps you stay prepared, professional,
+                and confident in front of your class or team.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="value-cta">
+        <h2>Make Organization Effortless.</h2>
+        <p>
+            The less time you spend tracking data,
+            the more time you have to focus on what actually matters —
+            your students, your employees, your impact.
+        </p>
+        <button class="glass-btn">Start Simplifying Today</button>
+    </div>
 
 </section>
 
