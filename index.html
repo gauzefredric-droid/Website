@@ -153,6 +153,109 @@ nav ul {
             <h1>Bigger.</h1>
             <h1>Better.</h1>
             <h1>Stronger.</h1>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+
+<div class="center-container">
+    <div class="spline-wrapper">
+        <spline-viewer 
+            url="https://prod.spline.design/r88ApdCEED5QtZEv/scene.splinecode">
+        </spline-viewer>
+    </div>
+</div>
+
+<style>
+/* Optional wrapper container */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Control actual viewport size */
+.spline-wrapper {
+    padding-left: 100px;
+    width: 800px;      /* Adjust size */
+    height: 600px;     /* Adjust size */
+}
+
+/* Make spline fill wrapper */
+spline-viewer {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style>
+<button class="glass-btn">Get Started</button>
+
+<style>
+/* Glassmorphic Button */
+.glass-btn {
+    padding: 14px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    cursor: pointer;
+
+    /* Your Gradient */
+    background: linear-gradient(
+        180deg,
+        #8bdbc6,
+        #4aba9c,
+        #306053
+    );
+
+    /* Glass Effect */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Soft glow */
+    box-shadow:
+        0 8px 30px rgba(74, 186, 156, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* White glass highlight */
+.glass-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.6),
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.6s;
+}
+
+/* Hover effects */
+.glass-btn:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 40px rgba(74, 186, 156, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.glass-btn:hover::before {
+    left: 130%;
+}
+
+/* Click effect */
+.glass-btn:active {
+    transform: scale(0.96);
+}
+</style>
         </section>
 
     </main>
