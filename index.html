@@ -68,16 +68,19 @@ section h1::after {
     color: transparent;
     pointer-events: none;
 }
-            nav {
-                background-color: black;
-                padding: 0 20px;
-            }
+nav {
+    background-color: black;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;   /* Centers everything horizontally */
+}
 
-            nav ul {
-                list-style: none;
-                display: flex;
-                justify-content: left;
-            }
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;       /* Vertically aligns logo + links */
+    gap: 10px;                 /* Space between items */
+}
 
             nav ul li {
                 position: relative;
@@ -130,6 +133,9 @@ section h1::after {
                 <li>
                     <a href="#">Services</a>
                     <ul>
+                        <li>
+                            <img src="big.ico" style="height: 60px; width: 60px;">
+                        </li>
                         <li><a href="#">Web Design</a></li>
                         <li><a href="#">Development</a></li>
                         <li><a href="#">SEO</a></li>
