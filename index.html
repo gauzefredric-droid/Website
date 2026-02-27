@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyDB</title>
-    <style>
-            /* Reset default styles */
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyDB</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    margin: 0;
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #000000, #252525);
+    background: radial-gradient(circle at top, #111 0%, #000 60%);
+    color: white;
+    overflow-x: hidden;
 }
 
-section {
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    padding: 12px 30px;
+    border-radius: 50px;
+
+    display: flex;
+    justify-content: center;
+
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: calc(100vh - 120px);
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 0 20px;
 }
 
-section h1 {
-    font-size: 8vw;
+/* Premium Gradient Text */
+.hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 900;
-    text-align: center;
-    position: relative;
+    line-height: 1.1;
 
-    /* Gradient */
     background: linear-gradient(
         180deg,
         #8bdbc6,
@@ -36,232 +88,124 @@ section h1 {
         #306053
     );
 
-    /* Make gradient apply to text */
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 
-    /* Slight translucency */
-    opacity: 0.95;
-        text-shadow: 
-        0 0 5px rgba(139, 219, 198, 0.3),
-        0 0 15px rgba(74, 186, 156, 0.2);
+    text-shadow: 0 5px 25px rgba(74,186,156,0.15);
 }
 
-/* Glass highlight overlay */
-section h1::after {
+/* ===== SPLINE CONTAINER ===== */
+.spline-wrapper {
+    width: 900px;
+    height: 520px;
+    margin-top: 40px;
+    padding-left: 250px;
+    position: relative;
+}
+
+spline-viewer {
+    width: 75%;
+    height: 100%;
+    display: block;
+}
+
+/* ===== PREMIUM GLASS BUTTON ===== */
+.glass-btn {
+    margin-top: 40px;
+    padding: 14px 42px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: white;
+
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    /* Same glass language as navbar */
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Subtle depth */
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Soft internal glow layer */
+.glass-btn::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    
+    inset: 0;
+    border-radius: inherit;
     background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.05)
+        180deg,
+        rgba(139,219,198,0.25),
+        rgba(74,186,156,0.15),
+        rgba(48,96,83,0.1)
     );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    opacity: 0.6;
     pointer-events: none;
 }
-nav {
-    background-color: black;
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;   /* Centers everything horizontally */
+
+/* Hover = subtle elevation */
+.glass-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;       /* Vertically aligns logo + links */
-    gap: 10px;                 /* Space between items */
+/* Pressed state */
+.glass-btn:active {
+    transform: translateY(0px) scale(0.98);
 }
 
-            nav ul li {
-                position: relative;
-            }
+/* ===== FOOTER SPACE ===== */
+footer {
+    height: 100px;
+}
 
-            nav ul li a {
-                display: block;
-                padding: 20px 20px;
-                text-decoration: none;
-                color: white;
-                transition: background 0.3s ease;
-            }
-
-            nav ul li a:hover {
-                background-color: #444;
-            }
-
-            /* Dropdown Menu */
-            nav ul li ul {
-                display: none;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                background-color: #333;
-                min-width: 160px;
-                flex-direction: column;
-            }
-
-            nav ul li ul li a {
-                padding: 12px 15px;
-            }
-
-            nav ul li:hover ul {
-                display: block;
-            }
-
-            nav ul li ul li a:hover {
-                background-color: #555;
-            }
-        
-    </style>
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <img src="big.ico" style="height: 60px; width: 60px;">
-                <li><a href="#">Home</a></li>
 
-                <li>
-                    <a href="#">Services</a>
-                    <ul>
-                        <li>
-                            <img src="big.ico" style="height: 60px; width: 60px;">
-                        </li>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">SEO</a></li>
-                    </ul>
-                </li>
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
 
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+<section class="hero">
 
-    </header>
-    <main>
-        <section>
-            <h1>Bigger.</h1>
-            <h1>Better.</h1>
-            <h1>Stronger.</h1>
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+    <h1>Bigger.<br>Better.<br>Stronger.</h1>
+        <button class="glass-btn">Click to Download EasyDB</button>
 
-<div class="center-container">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+
     <div class="spline-wrapper">
         <spline-viewer 
             url="https://prod.spline.design/r88ApdCEED5QtZEv/scene.splinecode">
         </spline-viewer>
     </div>
-</div>
-
-<style>
-/* Optional wrapper container */
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* Control actual viewport size */
-.spline-wrapper {
-    padding-left: 100px;
-    width: 800px;      /* Adjust size */
-    height: 600px;     /* Adjust size */
-}
-
-/* Make spline fill wrapper */
-spline-viewer {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-</style>
-<button class="glass-btn">Get Started</button>
-
-<style>
-/* Glassmorphic Button */
-.glass-btn {
-    padding: 14px 40px;
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50px;
-    cursor: pointer;
-
-    /* Your Gradient */
-    background: linear-gradient(
-        180deg,
-        #8bdbc6,
-        #4aba9c,
-        #306053
-    );
-
-    /* Glass Effect */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    /* Soft glow */
-    box-shadow:
-        0 8px 30px rgba(74, 186, 156, 0.35),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4);
-
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* White glass highlight */
-.glass-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(255,255,255,0.6),
-        rgba(255,255,255,0.1),
-        transparent
-    );
-    transform: skewX(-25deg);
-    transition: 0.6s;
-}
-
-/* Hover effects */
-.glass-btn:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        0 12px 40px rgba(74, 186, 156, 0.5),
-        inset 0 1px 2px rgba(255, 255, 255, 0.6);
-}
-
-.glass-btn:hover::before {
-    left: 130%;
-}
-
-/* Click effect */
-.glass-btn:active {
-    transform: scale(0.96);
-}
-</style>
-        </section>
-
-    </main>
-    <footer>
 
 
-    </footer>
+
+</section>
+
+<footer></footer>
+
 </body>
 </html>
